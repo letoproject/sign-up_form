@@ -464,8 +464,8 @@ p {
 
 .form-side {
   padding-top: 3rem;
-  padding-left: 3rem;
   width: min(80ch, 100%);
+  margin: 0 auto;
 }
 
 .form-container {

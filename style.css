@@ -380,14 +380,33 @@ template {
 
 /* /Sign-up Form/ */
 
-    @font-face {
-      font-family: norseBold;
-      src: url(./font/Norse-Bold.otf);
-    }
+@font-face {
+  font-family: norseBold;
+  src: url(./font/Norse-Bold.otf);
+}
+
+:root {
+  --accent-color: #fb4a00;
+  --main-bgc: #f9fafb;
+  --form-bgc: #23262163;
+  --white: #fff;
+  
+}
 
 body {
-  display: flex;
+  /* background-color: var(--main-bgc); */
+  background: linear-gradient(165deg, #ffffff 0%, #efa97b 70%, #f54900 100% );
   font-family: 'Noto Sans', sans-serif;
+}
+
+.main-containter {
+  display: flex;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-left: 3rem;
 }
 
 /* /ASIDE/ */
@@ -395,21 +414,23 @@ body {
 .aside {
   background-image: url("./images/side.jpg");
   background-size: cover;
+  background-position: right;
   background-repeat: no-repeat;
   width: calc(100vw - 40%);
   height: 100vh;
+  position: relative;
 }
 
 .logo-container {
   font-family: norseBold;
 
-  background-color: rgba(0, 0, 0, .25);
-  color: #fff;
+  background-color: rgba(187, 187, 187, 0.5);
+  color: var(--white);
 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 12rem;
+  margin-top: 7rem;
   padding: 1rem 0;
 }
 
@@ -418,23 +439,34 @@ body {
   font-size: 5em;
 }
 
-/* /MAIN/ */
+.aside-footer {
+  font-size: .8rem;
+  text-align: center;
 
-p {
-  font-size: 1.5rem;
-  font-weight: 500;
-  padding-left: 3rem;
+  position: absolute;
+  padding: 0;
+  left: 1rem;
+  bottom: .5rem;
+  color: var(--white);
 }
 
-.main-containter {
-  padding-top: 3rem;
-  background-color: #f9fafb;
+.aside-footer a {
+  color: var(--white);
 }
 
 /* /FORM/ */
 
+.input-error, 
+.input-success {
+  visibility: hidden;
+}
+
+.form-side {
+  padding-top: 3rem;
+}
+
 .form-container {
-  background-color: #d5e1eb2f;
+  background: var(--form-bgc);
   box-shadow:  10px 10px 10px hsla(0, 0%, 0%, 0.397);
 
   padding-top: 0.5rem;
@@ -458,49 +490,69 @@ label {
   text-transform: uppercase;
   letter-spacing: .125rem;
   font-weight: 600;
+
   color: #1f293785;
+
+  padding-bottom: .125rem;
+}
+
+input {
+  outline: none;
+  height: 1.5rem;
+  border-radius: .2em;
+  padding-left: .5rem;
 }
 
 input[type=text],
 input[type=email],
 input[type=tel],
 input[type=password] {
-  height: 1.5rem;
   border: 1px solid rgba(128, 128, 128, 0.425);
-  border-radius: .2em
+}
+
+input[type=text]:valid:not(:focus):not(:placeholder-shown),
+input[type=email]:valid,
+input[type=tel]:valid,
+input[type=password]:valid {
+  background-color: #b1f79f9d;
+  border: 1px solid #4adb37;
+  background-image: url(./images/noun-check-2248401.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}
+
+input[type=text]:not(:focus):invalid:not(:placeholder-shown),
+input[type=email]:not(:focus):invalid:not(:placeholder-shown),
+input[type=tel]:not(:focus):invalid:not(:placeholder-shown),
+input[type=password]:not(:focus):invalid:not(:placeholder-shown) {
+  background-color: #f7b19f9d;
+  border: 1px solid #db5037;
+  background-image: url(./images/noun-cancel-334172.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}
+
+input[type=text]:not(:focus):invalid:not(:placeholder-shown) ~ .input-error {
+  visibility: visible;
 }
 
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=tel]:focus,
 input[type=password]:focus {
-  outline: none;
   border: 1px solid #3762db;
+  /* background-color: none; */
   box-shadow: 2px 2px 4px #0a090921;
-}
-
-input[type=text]:valid,
-input[type=email]:valid,
-input[type=tel]:valid,
-input[type=password]:valid {
-  background-color: #b1f79f9d;
-  border: 1px solid #4adb37;
-}
-
-input[type=text]:invalid,
-input[type=email]:invalid,
-input[type=tel]:invalid,
-input[type=password]:invalid {
-  background-color: #f7b19f9d;
-  border: 1px solid #db5037;
 }
 
 
 button[type="submit"] {
   cursor: pointer;
-  background-color: #d34406;
-  color: #fff;
-  border: 2px solid #d34406;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border: 2px solid var(--accent-color);
   border-radius: .5em;
 
   font-size: 1.25rem;
@@ -513,7 +565,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: inherit;
-  color: #d34406;
+  color: var(--accent-color);
   
 }
 
@@ -525,5 +577,5 @@ font-size: 1.25rem;
   
   text-decoration: none;
   font-weight: 600;
-  color: #e6541b
+  color: var(--accent-color);
 }

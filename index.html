@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  <main class="main-containter">
+  <main class="main-container">
     <div class="aside">
       <div class="logo-container">
         <img src="./images/odin-lined.png" alt="Odin logo" width="70px">
@@ -29,7 +29,7 @@
           <p>Let's do this!</p>
           <div class="form-row">
             <div class="form-item">
-              <label for="first_name" autofocus>First name</label>
+              <label class="required" for="first_name" autofocus>First name</label>
               <input 
               type="text" 
               name="user_first_name" 
@@ -38,8 +38,8 @@
               placeholder=" " 
               required
               >
-              <span class="input-error">Bad</span>
-              <span class="input-success">Good</span>
+              <span class="input-helper"> </span>
+              
             </div>
             <div class="form-item">
               <label for="last_name">Last name</label>
@@ -50,11 +50,12 @@
               minlength="2" 
               placeholder=" " 
               >
+              <span class="input-helper"></span>
             </div>
           </div>
           <div class="form-row">
             <div class="form-item">
-              <label for="mail">Email</label>
+              <label class="required" for="mail">Email</label>
               <input 
               type="email" 
               name="user_email" 
@@ -63,6 +64,7 @@
               value=""
               required
               >
+              <span class="input-helper"></span>
             </div>
             <div class="form-item">
               <label for="phone">Phone</label>
@@ -72,14 +74,14 @@
               id="phone" 
               placeholder="0990099999" 
               pattern="^0+[0-9]{9}$"
-              required
-             
+            
               >
+              <span class="input-helper"></span>
             </div>
           </div>
           <div class="form-row">
             <div class="form-item">
-              <label for="password">Password</label>
+              <label class="required" for="password">Password</label>
               <input 
               type="password" 
               name="user_password" 
@@ -88,9 +90,10 @@
               placeholder=" " 
               required
               >
+              <span class="input-helper"></span>
             </div>
             <div class="form-item">
-              <label for="confirm_password">Confirm password</label>
+              <label class="required" for="confirm_password">Confirm password</label>
               <input 
               type="password" 
               id="confirm_password" 
@@ -98,6 +101,7 @@
               placeholder=" " 
               required
               >
+              <span class="input-helper"></span>
             </div>
           </div>
         </div>

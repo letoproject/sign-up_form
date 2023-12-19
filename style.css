@@ -388,9 +388,10 @@ template {
 :root {
   --accent-color: #fb4a00;
   --main-bgc: #f9fafb;
-  --form-bgc: #23262163;
+  --form-bgc: #23262138;
   --white: #fff;
-  
+  --success-color: #16ae02;
+  --error-color:#d70000;
 }
 
 body {
@@ -399,7 +400,7 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.main-containter {
+.main-container {
   display: flex;
 }
 
@@ -456,10 +457,7 @@ p {
 
 /* /FORM/ */
 
-.input-error, 
-.input-success {
-  visibility: hidden;
-}
+
 
 .form-side {
   padding-top: 3rem;
@@ -478,11 +476,13 @@ p {
   padding-left: 3rem;
   gap: 3rem;
   margin-bottom: 1rem;
+  
 }
 
 .form-item {
   display: flex;
   flex-direction: column;
+  flex: 0;
 }
 
 label {
@@ -503,6 +503,11 @@ input {
   padding-left: .5rem;
 }
 
+.required::after {
+  content: "*";
+  color: var(--error-color)
+}
+
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -512,14 +517,14 @@ input[type=password] {
 
 input[type=text]:valid:not(:focus):not(:placeholder-shown),
 input[type=email]:valid,
-input[type=tel]:valid,
+input[type=tel]:valid:not(:focus):not(:placeholder-shown),
 input[type=password]:valid {
   background-color: #b1f79f9d;
-  border: 1px solid #4adb37;
+  border: 1px solid var(--success-color);
   background-image: url(./images/noun-check-2248401.svg);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: cover;
+  background-position: calc(98%);
+  background-size: 1rem;
 }
 
 input[type=text]:not(:focus):invalid:not(:placeholder-shown),
@@ -527,15 +532,11 @@ input[type=email]:not(:focus):invalid:not(:placeholder-shown),
 input[type=tel]:not(:focus):invalid:not(:placeholder-shown),
 input[type=password]:not(:focus):invalid:not(:placeholder-shown) {
   background-color: #f7b19f9d;
-  border: 1px solid #db5037;
+  border: 1px solid var(--error-color);
   background-image: url(./images/noun-cancel-334172.svg);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: cover;
-}
-
-input[type=text]:not(:focus):invalid:not(:placeholder-shown) ~ .input-error {
-  visibility: visible;
+  background-position: calc(98%);
+  background-size: 1rem;
 }
 
 input[type=text]:focus,
@@ -543,8 +544,25 @@ input[type=email]:focus,
 input[type=tel]:focus,
 input[type=password]:focus {
   border: 1px solid #3762db;
-  /* background-color: none; */
   box-shadow: 2px 2px 4px #0a090921;
+}
+
+.input-helper {
+  font-size: .8rem;
+  visibility: hidden;
+  padding-left: .5rem;
+}
+
+input[type=text]:valid:not(:focus):not(:placeholder-shown)~.input-helper::before {
+  content: "Name looks good";
+  visibility: visible;
+  color: var(--success-color);
+}
+
+input[type=text]:not(:focus):invalid:not(:placeholder-shown)~.input-helper::after {
+  content: "Name need to be a bit longer";
+  visibility: visible;
+  color: var(--error-color);
 }
 
 

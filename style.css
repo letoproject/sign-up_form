@@ -386,9 +386,9 @@ template {
 }
 
 :root {
-  --accent-color: #fb4a00;
+  --accent-color: #f56728;
   --main-bgc: #f9fafb;
-  --form-bgc: #23262138;
+  --form-bgc: #fefffe38;
   --white: #fff;
   --success-color: #16ae02;
   --error-color:#d70000;
@@ -396,12 +396,14 @@ template {
 
 body {
   /* background-color: var(--main-bgc); */
-  background: linear-gradient(165deg, #ffffff 0%, #efa97b 70%, #f54900 100% );
+  background: linear-gradient(155deg, #a2b7bd 0%, #ebbc9e 80%, #e55a3e 100% );
   font-family: 'Noto Sans', sans-serif;
 }
 
 .main-container {
   display: flex;
+  justify-content: center;
+  width: 100vw;
 }
 
 p {
@@ -415,9 +417,10 @@ p {
 .aside {
   background-image: url("./images/side.jpg");
   background-size: cover;
-  background-position: right;
+  background-position: center;
   background-repeat: no-repeat;
   width: calc(100vw - 40%);
+  max-width: 30vw;
   height: 100vh;
   position: relative;
 }
@@ -425,13 +428,13 @@ p {
 .logo-container {
   font-family: norseBold;
 
-  background-color: rgba(187, 187, 187, 0.5);
+  background-color: rgba(37, 37, 37, 0.4);
   color: var(--white);
 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7rem;
+  margin-top: 6.5rem;
   padding: 1rem 0;
 }
 
@@ -443,12 +446,14 @@ p {
 .aside-footer {
   font-size: .8rem;
   text-align: center;
+  width: 100%;
 
   position: absolute;
-  padding: 0;
-  left: 1rem;
+  padding: .25rem 0;
+  left: 0;
   bottom: .5rem;
   color: var(--white);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .aside-footer a {
@@ -457,15 +462,16 @@ p {
 
 /* /FORM/ */
 
-
-
 .form-side {
   padding-top: 3rem;
+  padding-left: 3rem;
+  width: min(80ch, 100%);
 }
 
 .form-container {
   background: var(--form-bgc);
   box-shadow:  10px 10px 10px hsla(0, 0%, 0%, 0.397);
+
 
   padding-top: 0.5rem;
   padding-bottom: 1.5rem;
@@ -521,7 +527,7 @@ input[type=tel]:valid:not(:focus):not(:placeholder-shown),
 input[type=password]:valid {
   background-color: #b1f79f9d;
   border: 1px solid var(--success-color);
-  background-image: url(./images/noun-check-2248401.svg);
+  background-image: url(./images/check.svg);
   background-repeat: no-repeat;
   background-position: calc(98%);
   background-size: 1rem;
@@ -533,7 +539,7 @@ input[type=tel]:not(:focus):invalid:not(:placeholder-shown),
 input[type=password]:not(:focus):invalid:not(:placeholder-shown) {
   background-color: #f7b19f9d;
   border: 1px solid var(--error-color);
-  background-image: url(./images/noun-cancel-334172.svg);
+  background-image: url(./images/cancel.svg);
   background-repeat: no-repeat;
   background-position: calc(98%);
   background-size: 1rem;
@@ -557,12 +563,23 @@ input[type=text]:valid:not(:focus):not(:placeholder-shown)~.input-helper::before
   content: "Name looks good";
   visibility: visible;
   color: var(--success-color);
+  padding-left: 0;
 }
 
 input[type=text]:not(:focus):invalid:not(:placeholder-shown)~.input-helper::after {
   content: "Name need to be a bit longer";
   visibility: visible;
   color: var(--error-color);
+}
+
+.invalidInput {
+  visibility: visible;
+  color: var(--error-color);
+}
+
+.validInput {
+  visibility: visible;
+  color: var(--success-color);
 }
 
 
